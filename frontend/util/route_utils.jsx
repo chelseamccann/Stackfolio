@@ -2,18 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route, withRouter } from 'react-router-dom';
 
-// const mapStateToProps = state => {
-//     let userId = state.session.id;
-//     return { loggedIn: Boolean(state.entities.users[userId]) }
-// };
-
-// const mapStateToProps = state => ({
-//     loggedIn: Boolean(state.session.currentUser),
-//   });
-
 const mapStateToProps = state => {
-
-    debugger
     return { loggedIn: Boolean(state.session.id) }
 };
 

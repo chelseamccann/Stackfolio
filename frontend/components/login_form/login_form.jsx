@@ -30,22 +30,22 @@ class LoginForm extends React.Component {
 
   handleDemo(e) {
     e.preventDefault();
-    const demoUser = {email: "JordanBelfort@w.com", password: "password123", buying_power: 0.00, total_portfolio_value: 0.00}
-    this.props.processForm(demoUser)
+    const demoUser = {email: "demo@user.com", password: "password123", buying_power: 0.00, total_portfolio_value: 0.00}
+    this.props.processForm(demoUser).then(() => this.props.history.push('/greeting'))
   }
 
   renderErrors(){
-    const err = this.props.errors.map((error, idx) => (
-      <li key={idx}>
-        {error[idx]}
-      </li>
-    ))
-
-    return (
-      <ul className="errors"> 
-      { (err.length>0) ? err : null }
-      </ul>
-    )
+    if (this.props.errors[0].length > 0){
+      return (
+        <ul className="errors"> 
+        {this.props.errors.map((error, idx) => (
+          <li key={idx}>
+            {error[idx]}
+          </li>
+        ))}
+        </ul>
+      )
+    }
   }
 
   render() {
