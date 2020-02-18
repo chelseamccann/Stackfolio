@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
     def new
-        @user = User.new
+        render :new
     end
 
     def create
@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
         if @user
             login!(@user)
             render 'users/show'
+            # redirect_to users_url(@user)
         else
             render json: ['Unable to log in with provided credentials.'], status: 422
         end
