@@ -5,9 +5,11 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      first_name: "",
+      last_name: "",
       email: "",
-      password: ""
+      password: "",
+      password_confirmation: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -49,18 +51,18 @@ class SignupForm extends React.Component {
           <div className="sign-up-form">
             
             <div className="name">
-              <input
+              {/* <input
                 type="text"
                 value={this.state.name}
                 onChange={this.update("name")}
                 placeholder={" Name"}
                 className="inputs lname"
                 required
-              />
-              {/* <input
+              /> */}
+              <input
                 type="text"
-                value={this.state.firstName}
-                onChange={this.update("firstName")}
+                value={this.state.first_name}
+                onChange={this.update("first_name")}
                 placeholder={" First Name"}
                 className="inputs fname"
                 required
@@ -68,17 +70,17 @@ class SignupForm extends React.Component {
 
               <input
                 type="text"
-                value={this.state.lastName}
-                onChange={this.update("lastName")}
+                value={this.state.last_name}
+                onChange={this.update("last_name")}
                 placeholder={" Last Name"}
                 className="inputs lname"
                 required
-                /> */}
+                />
             </div>
 
             <p></p>
               <input
-              type="text"
+              type="email"
               value={this.state.email}
               onChange={this.update("email")}
               placeholder={" Email address"}
@@ -90,6 +92,15 @@ class SignupForm extends React.Component {
               type="password"
               value={this.state.password}
               onChange={this.update("password")}
+              placeholder={" Password (min. 10 characters)"}
+              className="inputs"
+              required
+              />
+
+            <input
+              type="password"
+              value={this.state.password_confirmation}
+              onChange={this.update("password_confirmation")}
               placeholder={" Password (min. 10 characters)"}
               className="inputs"
               required
