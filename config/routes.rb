@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: 'static_pages#root'
   resources :users, only: [:create, :new]
   resource :session
-  resources :tickers, only: [:create, :new]
+  resources :tickers
   resources :transactions, only: [:create, :new]
 end

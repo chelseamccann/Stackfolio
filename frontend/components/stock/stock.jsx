@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {fetchPrice} from '../../util/ticker_price_util';
-import { createTransaction, createTicker } from '../../util/transaction_util';
+import { createTicker } from '../../util/ticker_util';
 
 export const Stock = ({ currentUser }) => {
     const [symbol, setSymbol] = useState('')

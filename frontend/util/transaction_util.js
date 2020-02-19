@@ -13,11 +13,3 @@ export const createTransaction = (transaction) => {
       data: { transactions }
     });
   };
-
-  export const createTicker = (ticker) => {
-    return $.ajax({
-      method: "POST",
-      url: "/tickers",
-      data: { ticker }
-    });
-  };
