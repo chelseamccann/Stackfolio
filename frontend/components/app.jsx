@@ -7,7 +7,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_utils';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import Home from './home/home';
 
-export default () => (
+export const App = () => (
   <div>
     <Route path="/" component={NavBarContainer}/>
     <Route exact path="/" component={Home} />
