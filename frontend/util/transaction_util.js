@@ -14,10 +14,10 @@ export const createTransaction = (transaction) => {
     });
   };
 
-  export const createTicker = (symbol, shares) => {
+  export const createTicker = (ticker) => {
     return $.ajax({
       method: "POST",
       url: "/tickers",
-      data: { symbol, shares, user }
+      data: { ticker }
     });
   };

@@ -12,8 +12,8 @@ export const Stock = ({ currentUser }) => {
         fetchPrice(symbol)
         .then(price => {
             setPrice(price) 
-            let transaction = {symbol, price, shares, user_id: currentUser.id}
-            createTransaction(transaction)
+            let ticker = {symbol, shares, value: price*shares}
+            createTicker(ticker)
         })
     }
 
