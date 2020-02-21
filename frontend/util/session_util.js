@@ -20,3 +20,10 @@ export const signup = (user) => {
       url: "/session"
     })
   }
+
+  export const fetchBuyingPower = () => {
+    return $.ajax({
+      method: "GET",
+      url: "/session"
+    })
+  }

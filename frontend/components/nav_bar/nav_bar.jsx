@@ -9,7 +9,6 @@ export default ({ currentUser, logout }) => {
       <Link to="/stocks" className="transactions-link">Stocks</Link>
       <button  onClick={logout}>Logout</button>
     </div>
-      // <Link to="/login" className="logout-button" onClick={logout}>Logout</Link>
 
   ) : (
     <div>

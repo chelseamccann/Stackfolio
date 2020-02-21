@@ -10,6 +10,11 @@ class SessionsController < ApplicationController
         end
     end
 
+    def show
+        @user = current_user
+        render json: @user
+    end
+
     def destroy
         if current_user
             logout!
