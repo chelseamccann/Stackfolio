@@ -10,8 +10,6 @@ export const Greeting = ({ currentUser, logout }) => (
 
         <Link to="/"><button className="" onClick={logout}><b className="title">Log Out</b></button></Link>
         <Stock currentUser={currentUser}/>
-        
-        {/* <Link to="/stocks">Stocks</Link> */}
         <StockIndex />
 
         <Link to="/transactions">Transactions</Link>

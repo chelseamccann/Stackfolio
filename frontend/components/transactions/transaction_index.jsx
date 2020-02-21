@@ -18,7 +18,7 @@ export const TransactionIndex = () => {
             <li key={idx} className="ticker">
                 <h2>Buy</h2>
                 <h2>Ticker: {transaction.ticker.symbol}</h2>
-                <h4>Number of Shares: {transaction.ticker.shares} @ {transaction.price}</h4>
+                <h4>Number of Shares: {transaction.shares} @ {transaction.price}</h4>
             </li>
             ))}
         </ul>
