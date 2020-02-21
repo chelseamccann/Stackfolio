@@ -4,8 +4,9 @@ import { Greeting } from './greeting';
 import { connect } from 'react-redux';
 
 function mapStateToProps(state, ownProps) {
-  let userId = state.session.id;
-  return { currentUser: state.entities.users[userId] }
+  let user = state.session.currentUser;
+  debugger
+  return { currentUser: state.entities.users[user] }
 }
 
 const mapDispatchToProps = dispatch => ({
