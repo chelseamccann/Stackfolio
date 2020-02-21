@@ -17,6 +17,6 @@ export const updateTicker = (ticker) => {
 export const fetchTickers = () => {
   return $.ajax({
     method: "GET",
-    url: "/tickers",
+    url: "/tickers"
   });
 };

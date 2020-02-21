@@ -12,15 +12,30 @@ export const Stock = () => {
 
     const [symbol, setSymbol] = useState('')
     const [shares, setShares] = useState('')
+    const [apiError, setApiError] = useState('')
 
     const handleBuy = e => {
         e.preventDefault()
         fetchPrice(symbol)
         .then(price => {
-            let ticker = {symbol, shares, value: price*shares}
-            tickers.some(ticker=>ticker['symbol']===symbol) ? dispatch(updateTicker(ticker)).then(() => dispatch(fetchBP())) : dispatch(createTicker(ticker)).then(() => dispatch(fetchBP()))
-        })
+            debugger
+            
+                let ticker = {symbol, shares, value: price*shares}
+                tickers.some(ticker=>ticker['symbol']===symbol) ? dispatch(updateTicker(ticker)).then(() => dispatch(fetchBP())) : dispatch(createTicker(ticker)).then(() => dispatch(fetchBP()))
+        },
+            (error) => {
+                debugger
+                if (error.status == 404){
+                    setApiError(`Ticker ${symbol} does not exist.`)
+                } else {
+                    setApiError(error.responseText)
+                }
+            }
+        )
     }
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
 
     useEffect(() => {
         dispatch(fetchTickers())
@@ -32,7 +47,11 @@ export const Stock = () => {
    return(
     <div className="stock-form">
         <div>Cash - ${buyingPower}</div>
-        <div>{ error ? error : null }</div>
+        
+        <div>
+            {apiError}
+            { error ? error : null }
+        </div>
         <form onSubmit={handleBuy}>
             <br />
             <br />
