@@ -1,2 +1,2 @@
 
-json.extract! @ticker, :symbol, :shares
+json.partial! 'tickers/ticker', ticker: ticker
