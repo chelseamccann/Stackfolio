@@ -12,14 +12,13 @@ export const StockIndex = () => {
     }, [])
 
    return(
-    <div>
+    <div className="stock-index">
         <h2>Portfolio (${tickersSum})</h2>
         <ul className="tickers">
         {tickers.map((ticker, idx) => (
             <li key={idx} className="ticker">
-                <h2>Ticker Symbol: {ticker.symbol}</h2>
-                <h4>Number of Shares: {ticker.shares}</h4>
-                <p>Value: {ticker.value}</p>
+                <p>{ticker.symbol} - {ticker.shares}</p>
+                <p>${ticker.value}</p>
             </li>
             ))}
         </ul>

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTransactions } from '../../actions/transaction_actions';
+import { Link } from 'react-router-dom';
 
 export const TransactionIndex = () => {
     const dispatch = useDispatch();
@@ -11,14 +12,12 @@ export const TransactionIndex = () => {
     }, [])
     
    return(
-    <div>
-        <h2>Transactions</h2>
-        <ul className="tickers">
+    <div className="stock-index">
+        <h2 className="transaction-title">Transactions</h2>
+        <ul className="tickers transactions">
         {transactions.map((transaction, idx) => (
             <li key={idx} className="ticker">
-                <h2>Buy</h2>
-                <h2>Ticker: {transaction.ticker.symbol}</h2>
-                <h4>Number of Shares: {transaction.shares} @ {transaction.price}</h4>
+                <p>Buy ({transaction.ticker.symbol}) - {transaction.shares} @ {transaction.price}</p>
             </li>
             ))}
         </ul>

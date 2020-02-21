@@ -1,0 +1,32 @@
+.stock-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.transactions-link{
+    float: right;
+}
+
+.ticker{
+    list-style: none;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticker > p{
+    font-size: 18px;
+}
+
+.tickers{
+    padding-left: 0;
+}
+
+.transactions{
+    width: max-content;
+    margin-left: 25%;
+}
+
+.transaction-title{
+    margin-left: 25%;
+}

@@ -30,7 +30,7 @@ export const Stock = ({ currentUser }) => {
     // }
 
    return(
-    <div>
+    <div className="stock-form">
         {price}
         <form onSubmit={handleBuy}>
             <br />
