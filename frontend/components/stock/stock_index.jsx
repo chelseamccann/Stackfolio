@@ -9,11 +9,8 @@ export const StockIndex = () => {
     const history = useHistory();
 
     useEffect(() => {
-        debugger
         dispatch(fetchTickers())
-        .then(() => { 
-            debugger
-            history.push("/stocks") } )
+        // .then(() => history.push("/stocks") )
     }, [])
 
    return(

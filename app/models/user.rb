@@ -7,7 +7,7 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
 
     has_many :transactions
-    has_many :tickers, :through => :transactions
+    has_many :tickers, -> { distinct }, :through => :transactions
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)

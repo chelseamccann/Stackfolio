@@ -14,18 +14,13 @@ export const receiveUpdatedTicker = ticker => ({
   ticker
 })
 
-export const receiveTickers = tickers => {
-  debugger
-  return {
+export const receiveTickers = tickers => ({
   type: RECEIVE_TICKERS,
   tickers
-}}
+})
 
 export const fetchTickers = () => dispatch => API.fetchTickers()
-    .then(tickers => {
-      debugger
-      return (dispatch(receiveTickers(tickers)))
-    })
+    .then(tickers => (dispatch(receiveTickers(tickers))))
   
 export const createTicker = (ticker) => dispatch => API.createTicker(ticker)
     .then(ticker => (dispatch(receiveNewTicker(ticker))))

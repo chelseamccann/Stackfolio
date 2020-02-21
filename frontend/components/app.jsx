@@ -11,7 +11,7 @@ import {StockIndex} from '../components/stock/stock_index';
 export const App = () => (
   <>
     <Route path="/" component={NavBarContainer}/>
-    <Route exact path="/" component={Home} />
+    {/* <Route exact path="/" component={GreetingContainer} /> */}
     <AuthRoute path="/signup" component={SignupFormContainer} />
     <AuthRoute path="/login" component={LoginFormContainer} />
     <ProtectedRoute path="/greeting" component={GreetingContainer} />

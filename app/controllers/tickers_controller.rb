@@ -1,7 +1,7 @@
 class TickersController < ApplicationController
 
     # run prior to executing method
-    before_action :ensure_logged_in, only: [:new, :edit, :update, :create, :destroy]
+    before_action :ensure_logged_in
 
     def create
         @ticker = current_user.tickers.build(ticker_params)
@@ -15,9 +15,7 @@ class TickersController < ApplicationController
     end
 
     def index
-        debugger
         @tickers = current_user.tickers
-        debugger
         render json: @tickers
     end
 
@@ -28,10 +26,11 @@ class TickersController < ApplicationController
 
     def update
         @existing_ticker = current_user.tickers.find_by_symbol(ticker_params[:symbol])
-        debugger
         updated_shares = @existing_ticker.shares + ticker_params[:shares].to_i
         updated_value = @existing_ticker.value + ticker_params[:value].to_f
+        # @existing_ticker.update(shares: updated_shares, value: updated_value)
         @existing_ticker.update_attributes(shares: updated_shares, value: updated_value)
+
         transaction_price = ticker_params[:value].to_f / ticker_params[:shares].to_f
         transaction = current_user.transactions.build(buy: true, price: transaction_price, ticker_id: @existing_ticker.id)
         transaction.save
