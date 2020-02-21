@@ -43,7 +43,4 @@ export const logoutUser = () => dispatch => logout()
 
 
 export const fetchBP = () => dispatch => fetchBuyingPower()
-  .then((user) => {
-    debugger
-    return dispatch(receiveCurrentUser(user))
-  } );
+  .then((user) => dispatch(receiveCurrentUser(user)) );

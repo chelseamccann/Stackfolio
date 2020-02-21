@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { fetchPrice } from '../../util/ticker_price_util';
 import { fetchBP } from '../../actions/session_actions';
-import { fetchTickers, createTicker, updateTicker } from '../../actions/ticker_actions';
+import { createTicker, updateTicker } from '../../actions/ticker_actions';
 import { useDispatch, useSelector } from "react-redux";
 
-export const Stock = () => {
-    const tickers = useSelector(state => Object.values(state.entities.tickers))
+export const Portfolio = ({tickers}) => {
     const buyingPower = useSelector(state => state.entities.users[state.session.id].buying_power)
     const error = useSelector(state => state.errors.session.error)
     const dispatch = useDispatch();
@@ -18,13 +17,10 @@ export const Stock = () => {
         e.preventDefault()
         fetchPrice(symbol)
         .then(price => {
-            debugger
-            
                 let ticker = {symbol, shares, value: price*shares}
                 tickers.some(ticker=>ticker['symbol']===symbol) ? dispatch(updateTicker(ticker)).then(() => dispatch(fetchBP())) : dispatch(createTicker(ticker)).then(() => dispatch(fetchBP()))
         },
             (error) => {
-                debugger
                 if (error.status == 404){
                     setApiError(`Ticker ${symbol} does not exist.`)
                 } else {
@@ -33,13 +29,6 @@ export const Stock = () => {
             }
         )
     }
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-
-    useEffect(() => {
-        dispatch(fetchTickers())
-    }, [])
 
     // const handleSell = e => {
     // }
@@ -47,7 +36,6 @@ export const Stock = () => {
    return(
     <div className="stock-form">
         <div>Cash - ${buyingPower}</div>
-        
         <div>
             {apiError}
             { error ? error : null }

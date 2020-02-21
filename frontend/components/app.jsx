@@ -1,5 +1,5 @@
 import React from 'react';
-import { Greeting } from './greeting/greeting';
+import { Dashboard } from './dashboard/dashboard';
 import LoginFormContainer from './login_form/login_form_container';
 import SignupFormContainer from './signup_form/signup_form_container';
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -12,7 +12,7 @@ export const App = () => (
     <Route path="/" component={NavBarContainer}/>
     <AuthRoute path="/signup" component={SignupFormContainer} />
     <AuthRoute path="/login" component={LoginFormContainer} />
-    <ProtectedRoute path="/stocks" component={Greeting} />
+    <ProtectedRoute path="/stocks" component={Dashboard} />
     <ProtectedRoute path="/transactions" component={TransactionIndex} />
   </>
 );

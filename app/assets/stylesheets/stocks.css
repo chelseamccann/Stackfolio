@@ -30,3 +30,15 @@
 .transaction-title{
     margin-left: 25%;
 }
+
+.green{
+    color: green;
+}
+
+.red{
+    color: red;
+}
+
+.grey{
+    color: lightgrey;
+}
