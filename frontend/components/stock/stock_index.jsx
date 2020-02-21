@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { fetchTickers } from '../../actions/ticker_actions';
-import { useHistory } from "react-router-dom";
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { fetchTickers } from '../../actions/ticker_actions';
 
 export const StockIndex = () => {
-    const tickers = useSelector(state => Object.values(state.entities.tickers) );
     const dispatch = useDispatch();
-    const history = useHistory();
+    const tickers = useSelector(state => Object.values(state.entities.tickers) );
+    const tickersSum = tickers.reduce((a, b) => a + (b["value"] || 0), 0).toFixed(2)
 
     useEffect(() => {
         dispatch(fetchTickers())
-        // .then(() => history.push("/stocks") )
     }, [])
 
    return(
     <div>
+        <h2>Portfolio (${tickersSum})</h2>
         <ul className="tickers">
         {tickers.map((ticker, idx) => (
             <li key={idx} className="ticker">
