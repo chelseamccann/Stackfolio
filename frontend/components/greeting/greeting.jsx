@@ -8,7 +8,7 @@ export const Greeting = ({ currentUser, logout }) => (
     <header className="nav-bar">
       <div> 
 
-        <Link to="/"><button className="" onClick={logout}><b className="title">Log Out</b></button></Link>
+        {/* <Link to="/"><button className="" onClick={logout}><b className="title">Log Out</b></button></Link> */}
         <Stock currentUser={currentUser}/>
         <StockIndex />
 

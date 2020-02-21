@@ -1,0 +1,85 @@
+.login-container{
+    text-align: center;
+}
+.signin {
+    padding-top: 10%;
+}
+
+.login-box{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin-right: 25%;
+    margin-left: 25%;
+    padding-bottom: 5%;
+}
+
+.login > div{
+    padding: 1%;
+}
+
+.email > label,
+.password > label{
+    float: left;
+    margin-left: 20%;
+}
+
+.fname > label,
+.lname > label,
+.pword > label,
+.pword-conf > label,
+.email-lg > label{
+    float: left;
+    margin-left: 15%;
+}
+
+.email > input,
+.password > input{
+    float: right;
+    margin-right: 20%;
+}
+
+.fname > input,
+.lname > input,
+.pword > input,
+.pword-conf > input,
+.email-lg > input{
+    float: right;
+    margin-right: 15%;
+}
+
+.buttons{
+    margin-top: 15%;
+}
+
+.signup-box{
+    padding-top: 5%;
+}
+
+.signup-continue-button{
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.password{
+    padding-top: 5%;
+}
+
+.email{
+    margin-bottom: 8%;
+}
+
+.login-box > div{
+    margin-top: 2%;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+}
+
+.bx{
+    padding-bottom: 10%;
+}

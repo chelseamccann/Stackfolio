@@ -47,69 +47,68 @@ class SignupForm extends React.Component {
 
     return (
       <>
-        <form onSubmit={this.handleSubmit} className="sign-up-container">
-          <div className="sign-up-form">
-            
-            <div className="name">
-              {/* <input
-                type="text"
-                value={this.state.name}
-                onChange={this.update("name")}
-                placeholder={" Name"}
-                className="inputs lname"
-                required
-              /> */}
+        <form onSubmit={this.handleSubmit} className="login-container">
+          <div className="login-box signup-box">
+            <h2 className="signup">Sign Up</h2>
+            <div className="fname">
+              <label>First Name: </label>
               <input
                 type="text"
                 value={this.state.first_name}
                 onChange={this.update("first_name")}
                 placeholder={" First Name"}
-                className="inputs fname"
                 required
                 />
+            </div>
 
+            <div className="lname">
+              <label>Last Name: </label>
               <input
                 type="text"
                 value={this.state.last_name}
                 onChange={this.update("last_name")}
                 placeholder={" Last Name"}
-                className="inputs lname"
                 required
                 />
             </div>
 
-            <p></p>
+            <div className="email-lg">
+              <label>Email: </label>
               <input
               type="email"
               value={this.state.email}
               onChange={this.update("email")}
               placeholder={" Email address"}
-              className="inputs"
               required
               />
+            </div>
 
+            <div className="pword">
+            <label>Password: </label>
               <input
               type="password"
               value={this.state.password}
               onChange={this.update("password")}
               placeholder={" Password (min. 10 characters)"}
-              className="inputs"
               required
               />
+            </div>
 
-            <input
-              type="password"
-              value={this.state.password_confirmation}
-              onChange={this.update("password_confirmation")}
-              placeholder={" Password (min. 10 characters)"}
-              className="inputs"
-              required
-              />
+            <div className="pword-conf">
+              <label>Password Confirmation: </label>
+              <input
+                type="password"
+                value={this.state.password_confirmation}
+                onChange={this.update("password_confirmation")}
+                placeholder={" Password (min. 10 characters)"}
+                required
+                />
+            </div>
 
-            <div className="login-errors">{this.renderErrors()}</div>
             <input type="submit" value="Continue" className="inputs signup-continue-button"/>
-            <p className="started">Already started? <Link className="login" to="/login">Log in to complete your application.</Link></p>
+            <p className="started">Already signed up? <Link className="login" to="/login">Log in instead.</Link></p>
             
+            <div className="login-errors">{this.renderErrors()}</div>
           </div>
         </form>
       </>

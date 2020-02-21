@@ -53,38 +53,43 @@ class LoginForm extends React.Component {
       <>
         <form onSubmit={this.handleSubmit} className="login-container">
           <div className="login-form">
-            <div className="login-box">
-            <h2>Welcome to Stockfolio</h2>
-      
-            <label>Email or Username</label>
-            <input
-              type="email"
-              value={this.state.email}
-              onChange={this.update("email")}
-              required
-              autoFocus
-              //email field?
-              />
-            <br/>
-            <label>Password</label>
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-              required
-              />
+            <div className="login-box bx">
+            <h2 className="signin">Sign In</h2>
 
-              
-            <Link to="/" className="forgot">Forgot your username/password?</Link>
-            <div className="login-errors">{this.renderErrors()}</div>
+          <div className="login">
+            <div className="email">
+              <label>Email: </label>
+              <input
+                type="email"
+                value={this.state.email}
+                onChange={this.update("email")}
+                required
+                autoFocus
+                //email field?
+                />
+            </div>
+
+            <div className="password">
+              <label>Password: </label>
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.update("password")}
+                required
+                />
+            </div>
+
+              {/* <Link to="/" className="forgot">Forgot your username/password?</Link> */}
 
 
 
-          <div className="lb">
+          <div className="buttons">
             <input type="submit" value="Sign In" className="login-buttons" />
             <button onClick={this.handleDemo} className="login-buttons">Demo User</button>
           </div>
-
+          <p className="started">Don't have an account? <Link className="signup" to="/signup">Sign up instead.</Link></p>
+            <div className="login-errors">{this.renderErrors()}</div>
+        </div>
 
           </div>
           </div>
