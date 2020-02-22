@@ -9,7 +9,6 @@ export const PortfolioIndex = ({tickers}) => {
         <h2>Portfolio (${tickersSum})</h2>
         <ul className="tickers">
         {tickers.map((ticker, idx) => {
-            debugger
             if (ticker.shares > 0){
 
                 return (<li key={idx} className="ticker">

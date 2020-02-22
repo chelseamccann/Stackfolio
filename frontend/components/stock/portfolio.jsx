@@ -52,7 +52,7 @@ export const Portfolio = ({tickers}) => {
 
    return(
     <div className="stock-form">
-        <div>Cash - ${buyingPower}</div>
+        <div className="cash">Available Cash: ${buyingPower}</div>
         <div>
             {apiError}
             { error ? error : null }
@@ -77,7 +77,7 @@ export const Portfolio = ({tickers}) => {
                         onChange={e => setShares(e.target.value)}
                         placeholder={" Qty"}
                         required />
-                    <button className="submit-buttons" type="submit">Buy</button>
+                    <button className="buy-sell submit-buttons" type="submit">Buy</button>
                 </form>
             },
             {title:`Sell`, content: 
@@ -98,7 +98,7 @@ export const Portfolio = ({tickers}) => {
                         onChange={e => setShares(e.target.value)}
                         placeholder={" Qty"}
                         required />
-                    <button className="submit-buttons" type="submit">Sell</button>
+                    <button className="buy-sell submit-buttons" type="submit">Sell</button>
                 </form>
             }
         ]} />

@@ -10,12 +10,16 @@
 }
 .tab-title > li {
     width: 40%;
-    padding: 5%;
+    padding: 3%;
     padding-left: 12%;
 }
 
-.tab-title > li:hover,
-.tab-title > li:focus {
+.tab-title > li:hover {
+    background-color: lightgrey;
+    border: 1px solid lightgrey;
+}
+
+.buy-sell input[type=submit]:focus {
     background-color: lightgrey;
     border: 1px solid lightgrey;
 }
@@ -35,8 +39,12 @@
     width: 200px;
 }
 
-.tabs{
-    margin-top: 50%;
+.stock-form{
+    margin-top: 10%;
+}
+
+.stock-index{
+    margin-top: 10%;
 }
 
 .logout-btn{
@@ -47,14 +55,35 @@
     display: flex;
     flex-direction: column;
     float: right;
+    margin-right: 5%;
+    margin-top: 10%;
 }
 
 .logo{
     font-size: 42px;
-    font-family: fantasy;
+    font-family: sans-serif;
     margin-top: 20%;
 }
 
 .login-box{
     border-radius: 20px;
+}
+
+.transactions-link{
+    float: right;
+    text-decoration: none;
+    color: black;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+
+.transaction-title{
+    font-size: 32px;
+    font-family: sans-serif;
+}
+
+.ticker{
+    font-family: sans-serif;
+    margin-top: 4%;
+    margin-bottom: 3%;
 }

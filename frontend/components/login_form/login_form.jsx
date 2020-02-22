@@ -66,6 +66,7 @@ class LoginForm extends React.Component {
                 required
                 autoFocus
                 className="email-input"
+                placeholder={" Email address"}
                 />
             </div>
 
@@ -77,6 +78,7 @@ class LoginForm extends React.Component {
                 onChange={this.update("password")}
                 required
                 className="pword-input"
+                placeholder={" Password"}
                 />
             </div>
 
