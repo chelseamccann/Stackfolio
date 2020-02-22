@@ -12,6 +12,7 @@ export const Portfolio = ({tickers, formatMoney}) => {
     const dispatch = useDispatch();
 
     const [symbol, setSymbol] = useState('')
+    const [price, setPrice] = useState('')
     const [shares, setShares] = useState('')
     const [apiError, setApiError] = useState('')
 
@@ -20,8 +21,9 @@ export const Portfolio = ({tickers, formatMoney}) => {
         e.preventDefault()
         fetchPrice(symbol)
         .then(price => {
-                let ticker = {symbol, shares, value: price*shares}
-                tickers.some(ticker=>ticker['symbol']===symbol) ? dispatch(updateTicker(ticker)).then(() => dispatch(fetchBP())) : dispatch(createTicker(ticker)).then(() => dispatch(fetchBP()))
+            setPrice(price)
+            let ticker = {symbol, shares, value: price*shares}
+            tickers.some(ticker=>ticker['symbol']===symbol) ? dispatch(updateTicker(ticker)).then(() => dispatch(fetchBP())) : dispatch(createTicker(ticker)).then(() => dispatch(fetchBP()))
         },
             (error) => {
                 if (error.status == 404){
@@ -58,51 +60,75 @@ export const Portfolio = ({tickers, formatMoney}) => {
         <div className="cash">Available Cash: ${formatMoney(buyingPower)}</div>
         <Tabs tabStuff={[ 
             {title:`Buy`, content: 
-                <form onSubmit={handleBuy}>
-                    <input
-                        className="inputs tk"
-                        type="text"
-                        value={symbol}
-                        onChange={e => setSymbol(e.target.value)}
-                        placeholder={" Ticker"}
-                        required />
+                <form onSubmit={handleBuy} className="t-form">
+                    <div className="buy-sell-box">
 
-                    <input
-                        className="inputs"
+                    <div className="shares">    
+                        <label className="share" >Symbol</label>
+                        <input
+                            className="share-box share inputs tk"
+                            type="text"
+                            value={symbol}
+                            onChange={e => setSymbol(e.target.value)}
+                            placeholder={" Ticker"}
+                            required />
+                    </div>
+
+                    <div className="shares">
+                        <label className="share" id="shares" >Shares</label>
+                        <input 
+                        autoComplete="off"
+                        className="share share-box inputs "
+                        id="shares" 
                         type="number"
                         min="0" 
                         step="1"
-                        value={shares}
+                        value={shares} 
                         onChange={e => setShares(e.target.value)}
-                        placeholder={" Qty"}
-                        required />
-                    <button className="buy-sell submit-buttons" type="submit">Buy</button>
+                        placeholder="0"
+                        />
+                    </div>
+    
+                    <input type="submit" value="Buy" className="buy-sell submit-buttons"/>
+                </div>
                 </form>
             },
             
             {title:`Sell`, content: 
-                <form onSubmit={handleSell}>
-                    <input
-                        className="inputs tk"
-                        type="text"
-                        value={symbol}
-                        onChange={e => setSymbol(e.target.value)}
-                        placeholder={" Ticker"}
-                        required />
-                    <input
-                        className="inputs"
+                <form onSubmit={handleSell} className="t-form">
+                <div className="buy-sell-box">
+                    <div className="shares">
+                        <label className="share" >Symbol</label>
+                        <input
+                            className="share-box share inputs tk"
+                            type="text"
+                            value={symbol}
+                            onChange={e => setSymbol(e.target.value)}
+                            placeholder={" Ticker"}
+                            required />
+                    </div>
+
+                    <div className="shares">
+                        <label className="share" id="shares" >Shares</label>
+                        <input 
+                        autoComplete="off"
+                        className="share share-box inputs "
+                        id="shares" 
                         type="number"
                         min="0" 
                         step="1"
-                        value={shares}
+                        value={shares} 
                         onChange={e => setShares(e.target.value)}
-                        placeholder={" Qty"}
-                        required />
-                    <button className="buy-sell submit-buttons" type="submit">Sell</button>
+                        placeholder="0"
+                        />
+                    </div>
+    
+                    <input type="submit" value="Sell" className="buy-sell submit-buttons"/>
+                </div>
                 </form>
             }
         ]} />
-        <div>
+        <div className="errors">
             {apiError}
             { error ? error : null }
         </div>

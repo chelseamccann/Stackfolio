@@ -1,0 +1,121 @@
+.t-form{
+    font-size: 13px;
+    height: 100%;
+}
+
+.t-form > div{
+    display: flex;
+    padding-top: 6%;
+}
+
+.buy-sell{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.buy-sell-buttons {
+    box-sizing: border-box;
+    justify-content: space-evenly;
+    padding: 5%;
+    padding-right: 10%;
+    padding-left: 10%;
+    height: 100%;
+}
+.buy-sell-buttons > button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    font-weight: 650;
+    font-size: 13px;
+    letter-spacing: .25px;
+    line-height: 19px;
+    box-sizing: content-box;
+}
+
+.buy-sell-buttons > button:hover{
+    color: #21ce99;
+}
+
+.buy-sell-buttons{
+    display: flex;
+    width: 100%;
+    height: 50px;
+}
+
+.buy-sell-buttons > button {
+    width: 50%;
+}
+
+.buy-sell-buttons > button:focus{
+    outline: none;  
+}
+
+.shares{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.share{
+    align-content: center;
+    padding: 10px;
+    
+}
+
+.share-box{
+    border: 1px solid;
+    border-radius: 4px;
+    height: 15px;
+    line-height: 1.5em;
+    outline: 0;
+    transition: border-color 200ms;
+    width: 150px;
+    margin-right: 10px;
+}
+
+.share-two{
+    display: flex;
+}
+
+.buy-sell{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.buy-sell-box{
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-box:hover{
+    cursor: pointer;
+    box-shadow: 0px 4px 8px lightslategrey;
+    transition: box-shaow 300ms;
+}
+
+.cash{
+    margin-bottom: 4%;
+}
+
+.submit-buttons{
+    margin-left: 79%;
+    margin-bottom: 2%;
+    align-items: center;
+}
+
+.errors{
+    margin-top: -10%;
+    color: rgb(216, 0, 0);
+    margin-left: 1%;
+    width: 80%;
+}

@@ -51,3 +51,12 @@ table {
 input:focus, textarea:focus {
     outline: none;
 }
+
+/****************************/
+input:focus, textarea:focus, button:focus {
+    outline: none;
+}
+
+*{
+	font-family: "DIN Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+}

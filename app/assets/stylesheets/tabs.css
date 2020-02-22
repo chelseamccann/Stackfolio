@@ -4,8 +4,6 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    border: 1px solid rgb(114, 114, 114);
-    background-color: rgb(114, 114, 114);
     border-radius: 4px;
 }
 .tab-title > li {
@@ -16,14 +14,9 @@
 }
 
 .tab-title > li:hover {
-    background-color: lightgrey;
-    border: 1px solid lightgrey;
+    color: darkslategray;
 }
 
-.buy-sell input[type=submit]:focus {
-    background-color: lightgrey;
-    border: 1px solid lightgrey;
-}
 
 .inputs {
     padding: 8px;
@@ -59,7 +52,6 @@
 
 .logo{
     font-size: 42px;
-    font-family: sans-serif;
     margin-top: 5%;
     margin-bottom: 5%;
 }
@@ -76,17 +68,16 @@
 
 .transaction-title{
     font-size: 32px;
-    font-family: sans-serif;
 }
 
 .ticker{
-    font-family: sans-serif;
     margin-top: 4%;
     margin-bottom: 3%;
 }
 
 .active{
-    background-color: lightgray;
+    text-decoration: underline;
+    color: darkslategray;
     border-radius: 5px;
 }
 
@@ -98,4 +89,10 @@
     background-color: lightslategray;
     color: black;
     font-weight: 600;
+}
+
+.tab-box{
+    z-index: 1;
+    box-shadow: 0 0 4px 1px rgba(0,0,0,0.01), 0 3px 24px rgba(48,51,51,0.09);
+    box-sizing: content-box;
 }

@@ -51,7 +51,6 @@
 
 .stock-index > h2,
 .cash{
-    font-family: sans-serif;
     font-size: 28px;
 }
 
@@ -90,7 +89,6 @@
 }
 
 .ticker{
-    font-family: sans-serif;
     margin-top: 8%;
     margin-bottom: 6%;
     padding-bottom: 4%;

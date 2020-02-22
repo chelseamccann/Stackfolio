@@ -32,7 +32,7 @@ class TickersController < ApplicationController
 
     def update
         # If SELL and enough shares are held
-        if ticker_params[:value].to_f < 0 and ticker_params[:shares].to_f <= existing_ticker.shares
+        if ticker_params[:value].to_f < 0 and existing_ticker.shares + ticker_params[:shares].to_f >= 0
             updated_value = updated_shares * transaction_price
             existing_ticker.update_attributes(shares: updated_shares, value: updated_value)
             current_user.update(buying_power: new_buying_power)
@@ -42,7 +42,7 @@ class TickersController < ApplicationController
 
         # If SELL and enough shares are NOT held
         elsif ticker_params[:value].to_f < 0
-            render json: { error: 'You do not own that many shares.' }, status: 422
+            render json: { error: 'You do not own ' + (ticker_params[:shares].to_i*-1).to_s + ' shares of ' + ticker_params[:symbol] + '.' }, status: 422
             
         # If BUY and not enough buying power
         elsif new_buying_power < 0
