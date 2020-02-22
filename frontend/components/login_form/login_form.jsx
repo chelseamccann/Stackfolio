@@ -25,7 +25,7 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.processForm(this.state).then(() => this.props.history.push('/greeting'))
+    this.props.processForm(this.state).then(() => this.props.history.push('/stocks'))
   }
 
   handleDemo(e) {
@@ -81,10 +81,6 @@ class LoginForm extends React.Component {
                 placeholder={" Password"}
                 />
             </div>
-
-              {/* <Link to="/" className="forgot">Forgot your username/password?</Link> */}
-
-
 
           <div className="buttons">
             <input type="submit" value="Sign In" className="login-buttons" />
