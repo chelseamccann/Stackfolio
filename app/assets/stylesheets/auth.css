@@ -68,7 +68,7 @@
 }
 
 .email{
-    margin-bottom: 8%;
+    margin-bottom: 4%;
 }
 
 .login-box > div{
@@ -82,4 +82,32 @@
 
 .bx{
     padding-bottom: 10%;
+}
+
+.email-input, 
+.pword-input {
+    padding: 1%;
+    padding-left: 6%;
+    border-radius: 4px;
+}
+
+.signin,
+.signup{
+    margin-bottom: 5%;
+}
+
+.s-inputs{
+    padding: 1%;
+    border-radius: 4px;
+}
+
+.login-buttons{
+    padding: 1%;
+    background: none;
+    border-radius: 4px;
+    margin: 4px;
+}
+
+.submit-buttons{
+    background-color: lightgrey;
 }

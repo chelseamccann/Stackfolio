@@ -1,0 +1,60 @@
+.tab-title{
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid rgb(114, 114, 114);
+    background-color: rgb(114, 114, 114);
+    border-radius: 4px;
+}
+.tab-title > li {
+    width: 40%;
+    padding: 5%;
+    padding-left: 12%;
+}
+
+.tab-title > li:hover,
+.tab-title > li:focus {
+    background-color: lightgrey;
+    border: 1px solid lightgrey;
+}
+
+.inputs {
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.submit-buttons{
+    padding: 9px;
+    border-radius: 3px;
+    width: 70px;
+}
+
+.tk{
+    width: 200px;
+}
+
+.tabs{
+    margin-top: 50%;
+}
+
+.logout-btn{
+    float: right;
+}
+
+.nav-links{
+    display: flex;
+    flex-direction: column;
+    float: right;
+}
+
+.logo{
+    font-size: 42px;
+    font-family: fantasy;
+    margin-top: 20%;
+}
+
+.login-box{
+    border-radius: 20px;
+}

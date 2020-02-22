@@ -17,7 +17,7 @@ export const TransactionIndex = () => {
         <ul className="tickers transactions">
         {transactions.map((transaction, idx) => (
             <li key={idx} className="ticker">
-                <p>Buy ({transaction.ticker.symbol}) - {transaction.shares} @ {transaction.price}</p>
+                <p>{transaction.buy ? "Buy" : "Sell"} ({transaction.ticker.symbol}) - {transaction.shares} @ {transaction.price}</p>
             </li>
             ))}
         </ul>

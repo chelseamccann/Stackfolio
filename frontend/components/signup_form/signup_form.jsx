@@ -53,6 +53,7 @@ class SignupForm extends React.Component {
             <div className="fname">
               <label>First Name: </label>
               <input
+                className="s-inputs"
                 type="text"
                 value={this.state.first_name}
                 onChange={this.update("first_name")}
@@ -64,6 +65,7 @@ class SignupForm extends React.Component {
             <div className="lname">
               <label>Last Name: </label>
               <input
+                className="s-inputs"
                 type="text"
                 value={this.state.last_name}
                 onChange={this.update("last_name")}
@@ -75,6 +77,7 @@ class SignupForm extends React.Component {
             <div className="email-lg">
               <label>Email: </label>
               <input
+              className="s-inputs"
               type="email"
               value={this.state.email}
               onChange={this.update("email")}
@@ -86,6 +89,7 @@ class SignupForm extends React.Component {
             <div className="pword">
             <label>Password: </label>
               <input
+              className="s-inputs"
               type="password"
               value={this.state.password}
               onChange={this.update("password")}
@@ -97,6 +101,7 @@ class SignupForm extends React.Component {
             <div className="pword-conf">
               <label>Password Confirmation: </label>
               <input
+                className="s-inputs"
                 type="password"
                 value={this.state.password_confirmation}
                 onChange={this.update("password_confirmation")}

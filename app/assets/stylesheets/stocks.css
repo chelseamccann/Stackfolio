@@ -42,3 +42,9 @@
 .grey{
     color: lightgrey;
 }
+
+.item,
+.ticker{
+    margin: 4%;
+    width: 100%;
+}

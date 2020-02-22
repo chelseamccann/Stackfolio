@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 export default ({ currentUser, logout }) => {
 
   const display = currentUser ? (
-    <div>
+    <div className="nav-links">
       <Link to="/transactions" className="transactions-link">Transactions</Link>
       <Link to="/stocks" className="transactions-link">Stocks</Link>
-      <button  onClick={logout}>Logout</button>
+      <button className="logout-btn" onClick={logout}>Logout</button>
     </div>
 
   ) : (
-    <div>
-      <Link className="btn" to="/signup">Sign Up</Link>
-      <Link className="btn" to="/login">Log In</Link>
+    <div className="nav-links">
+      {/* <Link className="btn" to="/signup">Sign Up</Link>
+      <Link className="btn" to="/login">Log In</Link> */}
     </div>
   );
 

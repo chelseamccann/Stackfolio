@@ -65,7 +65,7 @@ class LoginForm extends React.Component {
                 onChange={this.update("email")}
                 required
                 autoFocus
-                //email field?
+                className="email-input"
                 />
             </div>
 
@@ -76,6 +76,7 @@ class LoginForm extends React.Component {
                 value={this.state.password}
                 onChange={this.update("password")}
                 required
+                className="pword-input"
                 />
             </div>
 

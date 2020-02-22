@@ -8,13 +8,15 @@ export const PortfolioIndex = ({tickers}) => {
     <div className="stock-index">
         <h2>Portfolio (${tickersSum})</h2>
         <ul className="tickers">
-        {tickers.map((ticker, idx) => (
-            <li key={idx} className="ticker">
-                <PortfolioItem ticker={ticker} />
-                {/* <p>{ticker.symbol} - {ticker.shares}</p>
-                <p>${ticker.value}</p> */}
-            </li>
-            ))}
+        {tickers.map((ticker, idx) => {
+            debugger
+            if (ticker.shares > 0){
+
+                return (<li key={idx} className="ticker">
+                    <PortfolioItem ticker={ticker} />
+                </li>)
+            }})}
+
         </ul>
     </div>
     )

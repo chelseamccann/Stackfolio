@@ -9,7 +9,7 @@ class TickersController < ApplicationController
             @ticker.save
 
             current_user.update(buying_power: new_buying_power)
-            create_transaction(@ticker)
+            create_transaction(@ticker, true)
 
             render json: @ticker, status: 200
         end
@@ -26,14 +26,25 @@ class TickersController < ApplicationController
     end
 
     def update
-        if new_buying_power < 0
+        if ticker_params[:value].to_f < 0 and ticker_params[:shares].to_f <= existing_ticker.shares
+            updated_value = updated_shares * transaction_price
+            
+            existing_ticker.update_attributes(shares: updated_shares, value: updated_value)
+
+            current_user.update(buying_power: new_buying_power)
+            create_transaction(existing_ticker, false)
+
+            render json: existing_ticker
+        elsif ticker_params[:value].to_f < 0
+            render json: { error: 'You do not own that many shares.' }, status: 422
+        elsif new_buying_power < 0
             render json: { error: 'Not enough buying power.' }, status: 422
         else
             updated_value = updated_shares * transaction_price
             existing_ticker.update_attributes(shares: updated_shares, value: updated_value)
 
             current_user.update(buying_power: new_buying_power)
-            create_transaction(existing_ticker)
+            create_transaction(existing_ticker, true)
 
             render json: existing_ticker
         end
@@ -44,8 +55,8 @@ class TickersController < ApplicationController
         params.require(:ticker).permit(:symbol, :shares, :value)
     end
 
-    def create_transaction(ticker)
-        current_user.transactions.create(buy: true, price: transaction_price, ticker_id: ticker.id, shares: ticker_params[:shares])
+    def create_transaction(ticker, buy)
+        current_user.transactions.create(buy: buy, price: transaction_price, ticker_id: ticker.id, shares: ticker_params[:shares])
     end
 
     def existing_ticker
