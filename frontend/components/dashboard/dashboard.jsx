@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchTickers } from '../../actions/ticker_actions';
-import { Portfolio } from '../stock/portfolio';
-import { PortfolioIndex } from '../stock/portfolio_index';
+import { Portfolio } from '../portfolio/portfolio';
+import { PortfolioIndex } from '../portfolio/portfolio_index';
 import { useDispatch, useSelector } from "react-redux";
 
 export const Dashboard = () => {
@@ -13,12 +13,14 @@ export const Dashboard = () => {
     dispatch(fetchTickers())
   }, [])
 
+  const formatMoney = (money) => parseFloat(money).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+
   return(
     <header className="nav-bar">
       <div className="stock-container"> 
 
-        <PortfolioIndex tickers={tickers} />
-        <Portfolio tickers={tickers} />
+        <PortfolioIndex tickers={tickers} formatMoney={formatMoney}/>
+        <Portfolio tickers={tickers} formatMoney={formatMoney}/>
 
       </div>
     </header>

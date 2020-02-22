@@ -9,8 +9,8 @@
     display: flex;
     flex-direction: column;
     border: 1px solid black;
-    margin-right: 25%;
-    margin-left: 25%;
+    margin-right: 30%;
+    margin-left: 30%;
     padding-bottom: 5%;
 }
 
@@ -109,4 +109,17 @@
 
 .submit-buttons{
     background-color: lightgrey;
+}
+
+.logout-btn{
+    cursor: pointer;
+}
+
+.transactions-link:hover{
+    background-color: lightslategray;
+}
+
+.login-box > h2{
+    font-size: 24px;
+    font-weight: 600;
 }

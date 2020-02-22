@@ -54,3 +54,44 @@
     font-family: sans-serif;
     font-size: 28px;
 }
+
+.show-wrap, .nav{
+    margin-left: 5%;
+}
+
+.show-wrap{
+    margin-top: 5%;
+}
+
+.btns {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.btns:hover{
+    color:  #21ce99;
+}
+
+.btns:focus{
+    outline: none;
+}
+
+.ticker-chart > h1{
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.transaction-title{
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.ticker{
+    font-family: sans-serif;
+    margin-top: 8%;
+    margin-bottom: 6%;
+    padding-bottom: 4%;
+}

@@ -12,6 +12,7 @@
     width: 40%;
     padding: 3%;
     padding-left: 12%;
+    transition: color 150ms ease-out;
 }
 
 .tab-title > li:hover {
@@ -53,16 +54,14 @@
 
 .nav-links{
     display: flex;
-    flex-direction: column;
-    float: right;
-    margin-right: 5%;
-    margin-top: 10%;
+    justify-content: center;
 }
 
 .logo{
     font-size: 42px;
     font-family: sans-serif;
-    margin-top: 20%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .login-box{
@@ -70,11 +69,9 @@
 }
 
 .transactions-link{
-    float: right;
-    text-decoration: none;
-    color: black;
-    border: 1px solid lightgrey;
-    border-radius: 5px;
+    text-decoration: underline;
+    color: darkslategray;
+    margin: 0px 5px 0px 5px;
 }
 
 .transaction-title{
@@ -86,4 +83,19 @@
     font-family: sans-serif;
     margin-top: 4%;
     margin-bottom: 3%;
+}
+
+.active{
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.tab-title > li:hover{
+    border-radius: 5px;
+}
+
+.submit-buttons{
+    background-color: lightslategray;
+    color: black;
+    font-weight: 600;
 }

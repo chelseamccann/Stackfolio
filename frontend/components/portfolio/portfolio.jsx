@@ -3,9 +3,10 @@ import { fetchPrice } from '../../util/ticker_price_util';
 import { fetchBP } from '../../actions/session_actions';
 import { createTicker, updateTicker } from '../../actions/ticker_actions';
 import { useDispatch, useSelector } from "react-redux";
-import Tabs from './tabs';
+import { Tabs } from './tabs';
+import Search from '../search/search';
 
-export const Portfolio = ({tickers}) => {
+export const Portfolio = ({tickers, formatMoney}) => {
     const buyingPower = useSelector(state => state.entities.users[state.session.id].buying_power)
     const error = useSelector(state => state.errors.session.error)
     const dispatch = useDispatch();
@@ -54,11 +55,7 @@ export const Portfolio = ({tickers}) => {
 
    return(
     <div className="stock-form">
-        <div className="cash">Available Cash: ${buyingPower}</div>
-        <div>
-            {apiError}
-            { error ? error : null }
-        </div>
+        <div className="cash">Available Cash: ${formatMoney(buyingPower)}</div>
         <Tabs tabStuff={[ 
             {title:`Buy`, content: 
                 <form onSubmit={handleBuy}>
@@ -82,6 +79,7 @@ export const Portfolio = ({tickers}) => {
                     <button className="buy-sell submit-buttons" type="submit">Buy</button>
                 </form>
             },
+            
             {title:`Sell`, content: 
                 <form onSubmit={handleSell}>
                     <input
@@ -104,7 +102,16 @@ export const Portfolio = ({tickers}) => {
                 </form>
             }
         ]} />
+        <div>
+            {apiError}
+            { error ? error : null }
+        </div>
 
+        <div className="search-bar">
+            <p>View historical prices before executing a transaction!</p> 
+            <p>Search any ticker here:</p>
+            <Search />
+        </div>
     </div>
     )
 }

@@ -1,16 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from '../../actions/session_actions';
 
-export default ({ currentUser, logout }) => {
+export const NavBar = () => {
+  
+  const currentUser = useSelector(state => state.session.id)
+  const dispatch = useDispatch();
 
-  // links to be shown based on if there is a user logged in or not
   const display = currentUser ? (
-    <div className="nav-links">
-      <Link to="/transactions" className="transactions-link">Transactions</Link>
-      <Link to="/stocks" className="transactions-link">Stocks</Link>
-      <button className="logout-btn" onClick={logout}>Logout</button>
+    <div>
+      <div className="nav-links">
+        <Link to="/transactions" className="transactions-link">Transactions</Link>
+        <Link to="/stocks" className="transactions-link">Stocks</Link>
+        <p className="transactions-link logout-btn" onClick={() => dispatch(logoutUser())}>Logout</p>
+      </div>
     </div>
-
   ) : (
     <div className="nav-links"></div>
   );
@@ -24,6 +29,4 @@ export default ({ currentUser, logout }) => {
       </div>
     </header>
   )
-
-  
 }

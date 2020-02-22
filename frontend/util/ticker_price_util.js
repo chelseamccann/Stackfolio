@@ -1,15 +1,21 @@
 
-export const fetchPrice = (ticker) => {
+export const fetchPrice = ticker => {
     return $.ajax({
         method: "GET", 
-        url: `https://sandbox.iexapis.com/stable/stock/${ticker}/price?token=Tpk_4ca09027bbda4ce1a28d8e1702fafdaa`,
+        url: `https://cloud.iexapis.com/stable/stock/${ticker}/price?token=pk_e32159988e5d4975aa0fd513e43d76f9`
     })
 }
 
-export const fetchPrices = ticker => {
+export const fetchDailyPrices = ticker => {
     return $.ajax({
         method: "GET",
-        url: `https://sandbox.iexapis.com/stable/stock/${ticker}/intraday-prices?token=Tpk_4ca09027bbda4ce1a28d8e1702fafdaa`
-        
+        url: `https://cloud.iexapis.com/stable/stock/${ticker}/intraday-prices?token=pk_e32159988e5d4975aa0fd513e43d76f9`
+    })
+}
+
+export const fetchPrices = (symbol, timeFrame) => {
+    return $.ajax({
+        method: "GET", 
+        url: `https://cloud.iexapis.com/stable/stock/${symbol}/chart/${timeFrame}?chartIEXOnly=true&token=pk_e32159988e5d4975aa0fd513e43d76f9`
     })
 }
