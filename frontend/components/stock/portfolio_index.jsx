@@ -2,6 +2,7 @@ import React from 'react';
 import {PortfolioItem} from './portfolio_item';
 
 export const PortfolioIndex = ({tickers}) => {
+    // calculate sum of tickers for portfolio
     const tickersSum = tickers.reduce((a, b) => a + (b["value"] || 0), 0).toFixed(2)
 
    return(

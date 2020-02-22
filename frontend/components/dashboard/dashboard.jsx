@@ -8,6 +8,7 @@ export const Dashboard = () => {
   const tickers = useSelector(state => Object.values(state.entities.tickers))
   const dispatch = useDispatch();
 
+  // fetch all tickers to send down as props
   useEffect(() => {
     dispatch(fetchTickers())
   }, [])

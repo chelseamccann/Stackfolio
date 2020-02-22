@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default ({ currentUser, logout }) => {
 
+  // links to be shown based on if there is a user logged in or not
   const display = currentUser ? (
     <div className="nav-links">
       <Link to="/transactions" className="transactions-link">Transactions</Link>
@@ -11,10 +12,7 @@ export default ({ currentUser, logout }) => {
     </div>
 
   ) : (
-    <div className="nav-links">
-      {/* <Link className="btn" to="/signup">Sign Up</Link>
-      <Link className="btn" to="/login">Log In</Link> */}
-    </div>
+    <div className="nav-links"></div>
   );
 
 

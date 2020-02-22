@@ -14,6 +14,7 @@ export const Portfolio = ({tickers}) => {
     const [shares, setShares] = useState('')
     const [apiError, setApiError] = useState('')
 
+    // fetch current price for given symbol and create ticker if new, update if already held
     const handleBuy = e => {
         e.preventDefault()
         fetchPrice(symbol)
@@ -31,6 +32,7 @@ export const Portfolio = ({tickers}) => {
         )
     }
 
+    // fetch current price and update ticker accordingly as sell
     const handleSell = e => {
         e.preventDefault()
         fetchPrice(symbol)
