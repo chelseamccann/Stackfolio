@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchDailyPrices } from '../../util/ticker_price_util';
+import { fetchOpenClose } from '../../util/ticker_price_util';
 
 
 export const PortfolioItem = ({ticker, formatMoney}) => {
@@ -7,14 +7,16 @@ export const PortfolioItem = ({ticker, formatMoney}) => {
 
     // fetch opening price and compare to find color to assign
     useEffect(() => {
-      fetchDailyPrices(ticker.symbol)
+      fetchOpenClose(ticker.symbol)
         .then(price => {
-          if (price[0].close < price[0].open) {
+          let open = price.open
+          let close = price.latestPrice
+          if (close < open) {
             setColor("red")
-          } else if (price[0].close == price[0].open) {
-            setColor("grey")
+          } else if (close > open) {
+            setColor("green")
           } else{
-            setColor("green") 
+            setColor("grey") 
           }
         })
     }, [])

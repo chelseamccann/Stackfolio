@@ -25,14 +25,12 @@ class TickerShow extends React.Component{
 
     componentDidMount(){
         fetchDailyPrices(this.props.tickerSymbol).then(response => this.renderDaily(response));
-        // fetchAnalystRatings(this.props.tickerSymbol).then(ratings => { this.tickerRating(ratings) });
     }
 
     componentDidUpdate(prevProps){
         let prev = prevProps.tickerSymbol || prevProps.match.params.tickerSymbol
         if (this.props.tickerSymbol !== prev){
             fetchDailyPrices(this.props.tickerSymbol).then(response => this.renderDaily(response));
-            // fetchAnalystRatings(this.props.tickerSymbol).then(ratings => { this.tickerRating(ratings) });
         }
     }
 
