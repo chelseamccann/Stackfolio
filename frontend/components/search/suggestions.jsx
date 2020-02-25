@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Show all suggested items that were fetched from iex (limited to 5 in Search component)
 const Suggestions = (props) => {
-  const len=props.inputText.length
+  const len = props.inputText.length
   const options = props.results.map((r, idx) => {
 
     return (

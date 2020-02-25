@@ -8,6 +8,7 @@ export const NavBar = () => {
   const currentUser = useSelector(state => state.session.id)
   const dispatch = useDispatch();
 
+  // If current user exists, show transactions and stocks links
   const display = currentUser ? (
     <div>
       <div className="nav-links">
@@ -23,7 +24,7 @@ export const NavBar = () => {
 
   return (
     <header className="nav">
-      <h1 className="logo">Stockfolio</h1>
+      <h1 className="logo">Stackfolio</h1>
       <div>
         {display}
       </div>

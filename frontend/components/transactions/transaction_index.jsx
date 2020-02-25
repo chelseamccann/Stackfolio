@@ -6,10 +6,12 @@ export const TransactionIndex = () => {
     const dispatch = useDispatch();
     const transactions = useSelector(state => Object.values(state.entities.transactions) );
 
+    // Fetch transactions to show on transaction index page
     useEffect(() => {
         dispatch(fetchTransactions())
     }, [])
 
+    // Format money
     const formatMoney = (money) => parseFloat(money).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
     
    return(

@@ -8,11 +8,12 @@ export const Dashboard = () => {
   const tickers = useSelector(state => Object.values(state.entities.tickers))
   const dispatch = useDispatch();
 
-  // fetch all tickers to send down as props
+  // Fetch all tickers to send down as props
   useEffect(() => {
     dispatch(fetchTickers())
   }, [])
 
+  // Format money
   const formatMoney = (money) => parseFloat(money).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
 
   return(

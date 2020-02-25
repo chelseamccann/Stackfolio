@@ -12,10 +12,7 @@ class TickerChart extends React.Component {
             change: parseFloat(this.props.close - this.props.open).toFixed(2), 
             percentChange: parseFloat(((this.props.close - this.props.open)/this.props.open)*100).toFixed(2),
             open: this.props.open,
-            chartX: null,
-            chartY: null,
             timeFrame: this.props.timeFrame,
-
         }
         this.handleMouseOver = this.handleMouseOver.bind(this);
         this.handleMouseOut = this.handleMouseOut.bind(this);
@@ -32,7 +29,7 @@ class TickerChart extends React.Component {
     }
 
     componentDidUpdate(){
-        if(this.state.timeFrame !== this.props.timeFrame){ //|| this.state.tickerSymbol !== this.props.tickerSymbol){
+        if(this.state.timeFrame !== this.props.timeFrame){ 
             this.setState({
                 timeFrame: this.props.timeFrame,
                 change: parseFloat(this.props.close - this.props.open).toFixed(2),
@@ -42,7 +39,7 @@ class TickerChart extends React.Component {
         }
     }
 
-
+    // Create mouse over chart effect
     handleMouseOver(e){
         if(e && e.activePayload !== undefined){
 
@@ -52,15 +49,13 @@ class TickerChart extends React.Component {
             let dailyPercentChange = (change/hoverPrice)*100
             this.setState({
                 closePrice: parseFloat(e.activePayload[0].payload.price).toFixed(2), 
-                chartX: e.chartX, 
-                chartY: e.chartY,
                 change: parseFloat(change.toFixed(2)),
                 percentChange: parseFloat(dailyPercentChange).toFixed(2)
             })
         }
     }
 
-
+    // Handle mouse out effect to return to last price changes
     handleMouseOut(e){
         let currentChange = (this.props.close - this.props.open)
         let currentPercentChange = (currentChange/this.props.close)*100
@@ -97,7 +92,6 @@ class TickerChart extends React.Component {
                     <Tooltip className='tooltip'
                                     contentStyle={{ border: '0', backgroundColor: 'transparent', color: 'grey'}}
                                     formatter={(value, name, props) => { return [""] }}
-                                    // position={{ x: this.state.chartX - 50, y: this.state.chartY -10 }}
                                     isAnimationActive={false} cursor={{ stroke: "Gainsboro", strokeWidth: 1.5 }}/> 
                     <Line connectNulls type="linear" dataKey="price" dot={false} stroke={this.props.color} strokeWidth={1}/>
                 </LineChart>

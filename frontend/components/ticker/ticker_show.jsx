@@ -20,13 +20,14 @@ class TickerShow extends React.Component{
             changePercent: 0,
         }
         this.updatePrices = this.updatePrices.bind(this);
-        this.tickerRating = this.tickerRating.bind(this);
     }
 
+    // On mount fetch daily prices for the ticker symbol provided, then invoke renderDaily with the response
     componentDidMount(){
         fetchDailyPrices(this.props.tickerSymbol).then(response => this.renderDaily(response));
     }
 
+    // If provided a new symbol, fetch daily prices for new symbol and renderDaily with the response
     componentDidUpdate(prevProps){
         let prev = prevProps.tickerSymbol || prevProps.match.params.tickerSymbol
         if (this.props.tickerSymbol !== prev){
@@ -34,6 +35,7 @@ class TickerShow extends React.Component{
         }
     }
 
+    // Clean null values in response data and format daily array of prices to then set state
     renderDaily(response){
         const daily = response.map(price => {
             return {label: price.label, price: price.close}
@@ -68,14 +70,13 @@ class TickerShow extends React.Component{
             close: lastValidClose, 
             change: parseFloat(lastValidClose - firstValidOpen).toFixed(2),
             changePercent: parseFloat(((lastValidClose - firstValidOpen)/firstValidOpen)*100).toFixed(2),
-            dailyDone: true,
             colorClass: firstValidOpen < lastValidClose ? "activeGreen" : "activeRed",
             color: firstValidOpen < lastValidClose ? "#21ce99" : "#f45531",
             backgroundColor: firstValidOpen < lastValidClose ? "activeGreenBackground" : "activeRedBackground"
              })
-
     }
 
+    // Format array of prices to then set state
     renderPrices(response, timeFramePassed){
         const data = response.map(price => {
             
@@ -103,6 +104,8 @@ class TickerShow extends React.Component{
         })
     }
 
+
+    // If new timeframe is provided (clicked), update prices accordingly then renderDaily or renderPrices with the response data
     updatePrices(timeFrame){
         if (this.state.timeFrame !== timeFrame){
             return e => {
@@ -112,33 +115,9 @@ class TickerShow extends React.Component{
         }
     }
 
-    tickerRating(ratings){
-        let rating;
-        let ratingNumber;
-        let netRatings = ratings[0].ratingBuy + ratings[0].ratingSell + ratings[0].ratingHold;
-        if (ratings[0].ratingBuy > ratings[0].ratingSell && ratings[0].ratingBuy > ratings[0].ratingHold){
-            ratingNumber = Math.round((ratings[0].ratingBuy / netRatings) *1e2)/1e2 *100
-            rating = `${Math.round(ratingNumber * 1e2) /1e2}% Buy`
-        } else if (ratings[0].ratingSell > ratings[0].ratingBuy && ratings[0].ratingSell > ratings[0].ratingHold){
-            ratingNumber = Math.round((ratings[0].ratingSell / netRatings) *1e2)/1e2 *100
-            rating = `${ratingNumber}% Sell`
-        } else if (ratings[0].ratingHold > ratings[0].ratingBuy && ratings[0].ratingHold > ratings[0].ratingSell){
-            ratingNumber = Math.round((ratings[0].ratingHold / netRatings) *1e2)/1e2 *100
-            rating = `${ratingNumber}% Hold`
-            `${Math.round((Math.round(ratingNumber) / Math.round(netRatings)) *1e2)/1e2 *100}%`
-        }
-        this.setState({ 
-            rating: rating, 
-            buyRating: ratings[0].ratingBuy, 
-            sellRating: ratings[0].ratingSell, 
-            holdRating: ratings[0].ratingHold, 
-            netRatings: netRatings,
-            isLoading: false,
-            ratingNumber: ratingNumber
-        }) 
-    }
-
     render(){
+
+        // Chart buttons for different timeframes with onClick events to update the charts prices for each
         const tF = Object.keys(this.state).map(key => {
             if (key==="1D" || key==="5dm" || key==="1mm" || key==="3M" || key==="1Y" || key==="5Y"){
                 return <button className={`btns ${this.state.timeFrame === key ? this.state.colorClass : ''}`} key={`${key}-id`} onClick={this.updatePrices(key)} >{key.slice(0, 2).toUpperCase()}</button>   

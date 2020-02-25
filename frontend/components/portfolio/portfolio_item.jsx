@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { fetchOpenClose } from '../../util/ticker_price_util';
 
-
+// Render each item in portfolio
 export const PortfolioItem = ({ticker, formatMoney}) => {
     const [color, setColor] = useState('');
 
-    // fetch opening price and compare to find color to assign
+    // Fetch opening price and compare to find color to assign
     useEffect(() => {
       fetchOpenClose(ticker.symbol)
         .then(price => {

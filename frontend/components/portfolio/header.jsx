@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 
+// Build tabs and toggle the active class based on which is clicked
 export const Header = ({tabStuff, changeTab, indexTab}) => {
 
     const idxTab = indexTab;
     const headers = tabStuff.map((el, indx) => {
         const title = el.title;
         const toggleActive = indx === idxTab ? 'active' : '';
-        // const tabColor = indx === idxTab ? `${colorClass}tab` : `${colorClass}hover`
         return (
             <li 
-            key = {indx}
-            className = {`${toggleActive}`}
-            // className = {`${tabColor}`}
-            onClick = {() => changeTab(indx)}>
-            {title}{' '}
+                key = {indx}
+                className = {`${toggleActive}`}
+                onClick = {() => changeTab(indx)}>
+                {title}{' '}
             </li>
         );
     });

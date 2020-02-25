@@ -12,7 +12,6 @@ export const Portfolio = ({tickers, formatMoney}) => {
     const dispatch = useDispatch();
 
     const [symbol, setSymbol] = useState('')
-    const [price, setPrice] = useState('')
     const [shares, setShares] = useState('')
     const [apiError, setApiError] = useState('')
 
@@ -21,17 +20,10 @@ export const Portfolio = ({tickers, formatMoney}) => {
         e.preventDefault()
         fetchPrice(symbol)
         .then(price => {
-            setPrice(price)
             let ticker = {symbol, shares, value: price*shares}
             tickers.some(ticker=>ticker['symbol']===symbol) ? dispatch(updateTicker(ticker)).then(() => dispatch(fetchBP())) : dispatch(createTicker(ticker)).then(() => dispatch(fetchBP()))
         },
-            (error) => {
-                if (error.status == 404){
-                    setApiError(`Ticker ${symbol} does not exist.`)
-                } else {
-                    setApiError(error.responseText)
-                }
-            }
+            (error) => (error.status == 404) ? setApiError(`Ticker ${symbol} does not exist.`) : setApiError(error.responseText)
         )
     }
 
@@ -45,13 +37,7 @@ export const Portfolio = ({tickers, formatMoney}) => {
                     dispatch(updateTicker(ticker)).then(() => dispatch(fetchBP()))
                 }
         },
-            (error) => {
-                if (error.status == 404){
-                    setApiError(`Ticker ${symbol} does not exist.`)
-                } else {
-                    setApiError(error.responseText)
-                }
-            }
+            (error) => (error.status == 404) ? setApiError(`Ticker ${symbol} does not exist.`) : setApiError(error.responseText)
         )
     }
 

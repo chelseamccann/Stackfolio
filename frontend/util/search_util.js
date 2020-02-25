@@ -6,7 +6,7 @@ export const fetchFromAPI = (query) => {
 }
 
 
-export const fetchAllFromAPI = (query) => {
+export const fetchSuggestionsFromAPI = (query) => {
     return $.ajax({
         method: "GET",
         url: `https://cloud.iexapis.com/stable/search/${query}?token=${window.iexAPIKey}`

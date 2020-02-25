@@ -12,24 +12,27 @@ export const LoginForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  // Clear error dispatch
   useEffect(() => {
     return () => {
       dispatch(clearErrors());
     }
   }, [])
 
-
+  // On submit of login form, dispatch user object then push history
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser({email, password})).then(() => history.push('/stocks'))
   }
 
+  // Demo user to login
   const handleDemo = (e) => {
     e.preventDefault();
     const demoUser = {email: "demo@user.com", password: "password123"}
     dispatch(loginUser(demoUser)).then(() => history.push('/stocks'))
   }
 
+  // Show errors
   const renderErrors = () => {
     if (errors.length > 0){
       return (

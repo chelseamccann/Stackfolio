@@ -15,18 +15,19 @@ export const SignupForm = () => {
   const [password, setPassword] = useState('')
   const [password_confirmation, setPasswordConfirmation] = useState('')
 
+  // Clear error dispatch
   useEffect(() => {
-    return () => {
-      dispatch(clearErrors());
-    }
+    return () => dispatch(clearErrors());
   }, [])
 
+  // On submit of signup form, dispatch user object then push history
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {first_name, last_name, email, password, password_confirmation}
     dispatch(signupUser(user)).then(() => history.push('/stocks'))
   }
 
+  // Show errors
   const renderErrors = () => {
     if (errors.length > 0){
       return (
