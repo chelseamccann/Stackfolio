@@ -54,10 +54,6 @@
     font-size: 28px;
 }
 
-.show-wrap, .nav{
-    margin-left: 5%;
-}
-
 .show-wrap{
     margin-top: 5%;
     display: flex;
