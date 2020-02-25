@@ -31,7 +31,7 @@ export const SignupForm = () => {
   const renderErrors = () => {
     if (errors.length > 0){
       return (
-        <ul className="errors"> 
+        <ul className="auth-errors"> 
         {errors.map((error, idx) => (
           <li key={idx}>
             {error[idx]}

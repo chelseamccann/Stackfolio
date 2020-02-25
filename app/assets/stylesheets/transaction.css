@@ -113,6 +113,10 @@
     align-items: center;
 }
 
+.auth-errors{
+    color: #f45531;
+}
+
 .errors{
     margin-top: -10%;
     color: #f45531;
