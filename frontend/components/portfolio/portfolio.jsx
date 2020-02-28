@@ -21,7 +21,9 @@ export const Portfolio = ({tickers, formatMoney}) => {
         fetchPrice(symbol)
         .then(price => {
             let ticker = {symbol, shares, value: price*shares}
-            tickers.some(ticker=>ticker['symbol']===symbol) ? dispatch(updateTicker(ticker)).then(() => dispatch(fetchBP())) : dispatch(createTicker(ticker)).then(() => dispatch(fetchBP()))
+            let ticker_purchased = tickers.some(ticker=>ticker['symbol']===symbol) ? dispatch(updateTicker(ticker)) : dispatch(createTicker(ticker))
+            ticker_purchased.then(() => dispatch(fetchBP()))
+            // tickers.some(ticker=>ticker['symbol']===symbol) ? dispatch(updateTicker(ticker)).then(() => dispatch(fetchBP())) : dispatch(createTicker(ticker)).then(() => dispatch(fetchBP()))
         },
             (error) => (error.status == 404) ? setApiError(`Ticker ${symbol} does not exist.`) : setApiError(error.responseText)
         )
